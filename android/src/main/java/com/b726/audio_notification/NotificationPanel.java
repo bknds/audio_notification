@@ -10,6 +10,7 @@ import androidx.core.app.NotificationCompat;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.widget.ImageView;
+// import android.graphics.Typeface;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 
@@ -28,7 +29,7 @@ public class NotificationPanel {
     private boolean play;
     private boolean like;
     private ImageView imageView;
-
+    
     // 网络获取图片
     private Bitmap getBitmapFromUrl(String urlString) {
         Bitmap bitmap;
@@ -62,6 +63,7 @@ public class NotificationPanel {
         this.play = play;
         this.like = like;
 
+        // Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/iconfont.ttf");
         nBuilder = new NotificationCompat.Builder(parent, "audio_notification")
                 .setSmallIcon(R.drawable.music)
                 .setPriority(Notification.PRIORITY_DEFAULT)
@@ -90,7 +92,10 @@ public class NotificationPanel {
         }
 
         setListeners(remoteView);
-        nBuilder.setContent(remoteView);
+        // 普通通知栏高度
+        // nBuilder.setContent(remoteView);
+        // 使用setCustomBigContentView可设置更大通知栏高度
+        nBuilder.setCustomBigContentView(remoteView);
         Notification notification = nBuilder.build();
 
         new Thread(new Runnable() {
