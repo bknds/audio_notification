@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.b726.audio_notification">
+  <application android:usesCleartextTraffic="true">
+      <receiver android:name="NotificationReturnSlot"></receiver>
+  </application>
+
+  <uses-permission android:name="android.permission.INTERNET" />
+</manifest>
